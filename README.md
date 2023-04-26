@@ -47,7 +47,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
   <p align="center">
       <img src="https://user-images.githubusercontent.com/108314498/234661349-5eb87019-fe59-47df-b168-4b0527a5d921.png">
   </p>
-  
+##  
 ### 2. Ưu điểm và Nhược điểm
 - Ưu điểm:
   - Tránh việc phải viết nhiều hàm khởi tạo cho class.
@@ -57,6 +57,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
   - Code trở nên uyển chuyển.
 - Nhược điểm:
   - Code có thể trở nên nhiều hơn và phức tạp hơn do đòi hỏi phải sử dụng nhiều class mới có thể cài đặt được pattern này.
+##
 ### 3. Hiện thực bằng code Java
 - __Product__:
 ``` java
@@ -78,7 +79,7 @@ public class BankAccount{ // product
    	this.interestRate = interestRate;
   	}
 ```
-  + Cung cấp thêm các hàm thao tác tùy thuộc vào yêu cầu công việc:
+   __Cung cấp thêm các hàm thao tác tùy thuộc vào yêu cầu công việc:__
 ``` java
 public int getAccountNumber() 
     return this.accountNumber;
@@ -166,7 +167,7 @@ public interface builder {// builder
     return this;
   }
 ```
-  + Và cung cấp phương thức trả về bằng hàm Builder()
+  __Và cung cấp phương thức trả về bằng hàm Builder()__
 ``` java
 @Override
     public BankAccount Builder() {
@@ -210,14 +211,14 @@ BankAccount Goldbankinfo = new GoldAccount().method1.method2.....Builder()
 BankAccount Diamondbankinfo = new DiamondAccount().method1.method2.....Builder()
 ```
 - __Kết quả__:
-  - Nếu người dùng set giá trị  __BonusInterestRate__ cho __Silver account__
+  Nếu người dùng set giá trị  __BonusInterestRate__ cho __Silver account__
 ``` java
 BankAccount Silverbankinfo = new SilverAccount().setBonusInterestRate(50)
     .
     .
     .Builder()
 ```
-  - Kết quả trả về: Error
+  Kết quả trả về: Error
 ```java
 director.java:3: error: cannot find symbol
               BankAccount Silverbankinfo = new SilverAccount().setBonusInterestRate(50)
@@ -226,7 +227,7 @@ symbol:   method setBonusInterestRate(int)
 location: class SilverAccount
 1 error
   ```
-  - Khởi tạo đối tượng theo từng level và in ra
+  Khởi tạo đối tượng theo từng level và in ra
 ```java
 BankAccount Silverbankinfo = new SilverAccount()
 		.setAccountNumber(77423)
@@ -287,6 +288,7 @@ Account Information
 * Balance: 1000
 * InterestRate: 1
 ```
+##
 ### 4. Liên hệ Design Pattern khác
  - Với Design Pattern, không có một giải pháp nào là ưu việt, tối ưu cho mọi trường hợp. nó sẽ phụ thuộc vào việc bạn cần hiện thực cái gì.
  - Giống nhau giữa Builder, Abstract Factory, Prototype là cả 3 đều có thể hiện thực dưới dạng Singletons.
