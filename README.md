@@ -49,6 +49,194 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
   </p>
   
 ### 2. Ưu điểm và Nhược điểm
+- Ưu điểm:
+  - Tránh việc phải viết nhiều hàm khởi tạo cho class.
+  - Không cần phải truyền giá trị null cho các tham số mà đối tượng không cần sử dụng tới.
+  - Hạn chế các lỗi phát sinh do việc gán sai hoặc gán nhầm tham số như trước đây.
+  - Kiểm soát tốt hơn quá trình xây dựng của đối tượng
+  - Code trở nên uyển chuyển.
+- Nhược điểm:
+  - Code có thể trở nên nhiều hơn và phức tạp hơn do đòi hỏi phải sử dụng nhiều class mới có thể cài đặt được pattern này.
+### 3. Hiện thực bằng code Java
+- __Product__:
+``` java
+public class BankAccount{ // product
+	private int accountNumber;
+	private String owner;
+		private String password;
+		private String birthday;
+	private int balance;
+	private int interestRate;
+
+    public BankAccount(int accountNumber, String owner, String password, String birthday, int balance, int interestRate){
+   	super();
+   	this.accountNumber = accountNumber;
+   	this.owner = owner;
+   	this.password = password;
+   	this.birthday = birthday;
+   	this.balance = balance;
+   	this.interestRate = interestRate;
+  	}
+```
+  + Cung cấp thêm các hàm thao tác tùy thuộc vào yêu cầu công việc:
+``` java
+public int getAccountNumber() 
+    return this.accountNumber;
+
+public int getOwner() 
+    return this.owner;
+
+public int getPassword()
+    return this.password;
+
+public int getBirthday() 
+    return this.birthday;
+
+public int getBalance() 
+    return this.balance;
+
+public int getInterestRate() 
+    return this.interestRate;
+
+@Override
+public String toString() {
+    return "Account Information\n* Account Number:" 
+     + this.getAccountNumber() 
+    + "\n* Owner: " + this.getOwner()
+     + "\n* Password: " + this.getPassword() 
+    + "\n* Birthday: " + this.getBirthday() 
+    + "\n* Balance: “ + this.getBalance() 
+     + "\n* InterestRate: " + this.getInterestRate();
+    }
+}
+```
+- __Builder__ - Khai báo phương thức tạo đối tượng, ví dụ cụ thể khai báo các hàm:
+``` java
+public interface builder {// builder
+    public builder setAccountNumber(int accountNumber);
+
+    public builder setOwner(String owner);
+
+    public builder setPassword(String password);
+
+    public builder setBirthday(String birthday);
+
+    public builder setBalance(int balance);
+
+    public builder setInterestRate(int interestRate);
+
+    public BankAccount Builder();
+}
+```
+- __Concrete Builder__: kế thừa builder, chi tiết cách tạo ra đối tượng bằng các hàm
+``` java
+@Override
+  public builder setAccountNumber(int accountNumber){
+    this.accountNumber = accountNumber;
+    return this;
+  }
+  
+@Override
+  public builder setOwner(String owner){
+    this.owner = owner;
+    return this;
+  }
+  
+@Override
+  public builder setPassword(String password){
+    this.password = password;
+    return this;
+  }
+  
+@Override
+  public builder setBirthday(String birthday){
+    this.birthday = birthday;
+    return this;
+  }
+
+@Override
+  public builder setBalance(int balance){
+    this.balance = balance;
+    return this;
+  }
+
+@Override
+  public builder setInterestRate(int interestRate){
+    this.interestRate =  interestRate;
+    return this;
+  }
+```
+  + Và cung cấp phương thức trả về bằng hàm Builder()
+``` java
+@Override
+    public BankAccount Builder() {
+        return new BankAccount 	
+        (this.accountNumber, this.owner, this.password,      	this.birthday, this.balance,this.interestRate);
+    }
+```
+- __Director__: Main function, gọi tới builder để tạo ra đối tượng __bankinfo__ bao gồm các thuộc tính được truyền vào
+``` java
+public class director {
+    public static void main(String args[]) {
+        BankAccount bankinfo = new BankAccountBuilder() 				                    			       .setAccountNumber(77423)
+			       .setOwner(“Spider")
+			                               .setPassword("123123")
+			            		       .setBalance(1000)		       			       	      								       .setBirthday("15/05/2003") 					      							       .setInterestRate(1).Builder();
+        System.out.println(bankinfo);
+    }
+}
+```
+- __Result__: chạy code và được kết quả
+``` java
+Account Information
+*Account Number: 77423
+*Owner: Spider
+*Password: 123123
+*Birthday: 15/05/2003
+*Balance: 1000
+*InterestRate: 1
+```
+##
+### Thêm ràng buộc vào parameter
+- __Yêu cầu__: Thêm thuộc tính AccountLevel bao gồm 3 level: Silver, Gold, Diamond để phân loại account. Đối với account loại __Gold__ và __Diamond__, cho phép set __BonusInterestRate__.
+- __Giải pháp__: Xây dựng từng __Concrete Builder__ riêng cho từng __level Account__
+
+![image](https://user-images.githubusercontent.com/108314498/234668141-6570bc84-869a-47a6-97c3-fac42ecb0914.png)
+
+- __Cụ thể__: Khi người dùng new một đối tượng theo level thì hàm sẽ trả vể các builder tương ứng
+``` java
+BankAccount Silverbankinfo = new SilverAccount().method1.method2.....Builder()
+BankAccount Goldbankinfo = new GoldAccount().method1.method2.....Builder()
+BankAccount Diamondbankinfo = new DiamondAccount().method1.method2.....Builder()
+```
+- __Kết quả__:
+  - Nếu người dùng set giá trị  __BonusInterestRate__ cho __Silver account__
+``` java
+BankAccount Silverbankinfo = new SilverAccount().setBonusInterestRate(50)
+    .
+    .
+    .Builder()
+```
+  - Kết quả trả về: Error
+```java
+director.java:3: error: cannot find symbol
+              BankAccount Silverbankinfo = new SilverAccount().setBonusInterestRate(50)
+                                                    ^
+symbol:   method setBonusInterestRate(int)
+location: class SilverAccount
+1 error
+  ```
+
+
+
+
+
+
+
+
+
+
+
 
   
 
