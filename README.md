@@ -175,17 +175,21 @@ public interface builder {// builder
 @Override
     public BankAccount Builder() {
         return new BankAccount 	
-        (this.accountNumber, this.owner, this.password,      	this.birthday, this.balance,this.interestRate);
+        (this.accountNumber, this.owner, this.password, this.birthday, this.balance,this.interestRate);
     }
 ```
 - __Director__: Main function, gọi tới builder để tạo ra đối tượng __bankinfo__ bao gồm các thuộc tính được truyền vào
 ``` java
 public class director {
     public static void main(String args[]) {
-        BankAccount bankinfo = new BankAccountBuilder() 				                    			       .setAccountNumber(77423)
-			       .setOwner(“Spider")
-			                               .setPassword("123123")
-			            		       .setBalance(1000)		       			       	      								       .setBirthday("15/05/2003") 					      							       .setInterestRate(1).Builder();
+        BankAccount bankinfo = new BankAccountBuilder()
+					.setAccountNumber(77423)
+					.setOwner(“Spider")
+					.setPassword("123123")
+					.setBalance(1000)
+					.setBirthday("15/05/2003")
+					.setInterestRate(1).Builder();
+					
         System.out.println(bankinfo);
     }
 }
