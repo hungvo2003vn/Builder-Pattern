@@ -1,0 +1,42 @@
+<div class="mt-4">
+    <h3>New Account Information</h3>
+    <form method="POST" action="/account">
+        <div class="mb-3">
+        <label for="class" class="form-label">Level</label>
+        <select class="form-control" id="class" name="level">
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="diamond">Diamond</option>
+        </select>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Account Number</label>
+            <input type="text" class="form-control" id="mamon" name="accountnumber">
+        </div>
+         <div class="mb-3">
+            <label for="description" class="form-label">Owner</label>
+            <input type="text" class="form-control" id="ten" name="own">
+        </div> 
+        <div class="mb-3">
+            <label for="videoID" class="form-label">Password</label>
+            <input type="text" class="form-control" id="hinh" name="pass">
+        </div>
+         <div class="mb-3">
+            <label for="videoID" class="form-label">Balance</label>
+            <input type="text" class="form-control" id="manhom" name="balance">
+        </div>
+        <div class="mb-3">
+            <label for="videoID" class="form-label">Birthday</label>
+            <input type="text" class="form-control" id="dongia" name="bdate" placeholder="yyyy-mm-dd">
+        </div>
+        <div class="mb-3">
+            <label for="videoID" class="form-label">Interest Rate</label>
+            <input type="text" class="form-control" id="manhom" name="interestrate">
+        </div>
+        <div class="mb-3">
+            <label for="videoID" class="form-label">Bonus Interest Rate</label>
+            <input type="text" class="form-control" id="manhom" name="bonus">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+</div>

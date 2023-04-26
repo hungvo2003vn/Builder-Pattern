@@ -1,0 +1,66 @@
+<style>     
+         body {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            }
+
+            @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+            }
+</style>
+<div class="container">
+  <table class="table table-striped table-bordered table-hover animated-bg">
+    <thead class="thead-dark">
+ 
+      <tr>
+        <th>Attribute</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+         {{#each acc}}
+      <tr>
+        <td><b>Level</b></td>
+        <td>{{this.levels}}</td>
+      </tr>
+      <tr>
+        <td><b>Account Number</b></td>
+        <td>{{this.accountnumber}}</td>
+      </tr>
+      <tr>
+        <td><b>Owner</b></td>
+        <td>{{this.own}}</td>
+      </tr>
+      <tr>
+        <td><b>Password</b></td>
+        <td>{{this.pass}}</td>
+      </tr>
+      <tr>
+        <td><b>Balance</b></td>
+        <td>{{this.balance}}</td>
+      </tr>
+      <tr>
+        <td><b>Birthday</b></td>
+        <td>{{this.bdate}}</td>
+      </tr>
+      <tr>
+        <td><b>Interest Rate</b></td>
+        <td>{{this.interestrate}}</td>
+      </tr>
+       <tr>
+        <td><b>Bonus Interest Rate </b></td>
+        <td>{{this.bonus}}</td>
+      </tr>
+        {{/each}}
+      <!-- Add more rows here as needed -->
+    </tbody>
+  </table>
+</div>
+
+
+
