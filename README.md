@@ -226,9 +226,80 @@ symbol:   method setBonusInterestRate(int)
 location: class SilverAccount
 1 error
   ```
+  - Khởi tạo đối tượng theo từng level và in ra
+```java
+BankAccount Silverbankinfo = new SilverAccount()
+		.setAccountNumber(77423)
+		.setOwner(“Spider")			
+		.setPassword("123123")
+		.setBirthday("01/01/2003")			
+		.setBalance(1000)		
+		.setInterestRate(1)
+		.Builder();
+		
+BankAccount Goldbankinfo = new GoldAccount()
+		.setBonusInterestRate(50)			
+		.setAccountNumber(77424)			
+		.setOwner(“Bat")			
+		.setPassword("456456")			
+		.setBirthday("02/02/2003")			
+		.setBalance(1000)
+                .setInterestRate(1)
+		.Builder()
 
+BankAccount Diamondbankinfo = new DiamondAccount()			
+		.setBonusInterestRate(100)			
+		.setAccountNumber(77425)			
+		.setOwner(“Iron")			
+		.setPassword("789789")			
+		.setBirthday("03/03/2003")			
+		.setBalance(1000)		
+		.setInterestRate(1)			
+		.Builder();
+```
+```java
+Account Information
+* Account Number: 77423
+* Account Level: Silver
+* Owner: Spider
+* Password: 123123
+* Birthday: 01/01/2003
+* Balance: 1000
+* InterestRate: 1
+* Bonus InterestRate: 0%
 
+Account Information
+* Account Number: 77424
+* Account Level: Gold
+* Owner: Bat
+* Password: 456456
+* Birthday: 02/02/2003
+* Balance: 1000
+* InterestRate: 1
+* Bonus InterestRate: 50%
 
+Account Information
+* Account Number: 77425
+* Account Level: Diamond
+* Owner: Iron
+* Password: 789789
+* Birthday: 03/03/2001
+* Balance: 1000
+* InterestRate: 1
+```
+### 4. Liên hệ Design Pattern khác
+ - Với Design Pattern, không có một giải pháp nào là ưu việt, tối ưu cho mọi trường hợp. nó sẽ phụ thuộc vào việc bạn cần hiện thực cái gì.
+ - Giống nhau giữa Builder, Abstract Factory, Prototype là cả 3 đều có thể hiện thực dưới dạng Singletons.
+ - So sánh giữa Builder Pattern và Abstract Factory Pattern:
+
+| Builder | Abstract Factory |
+|---|---|
+| Tập trung vào xây dựng đối tượng phức tạp từng bước một | Dùng để tạo nhiều đối tượng liên quan đến nhau |
+| Tạo ra các đối tượng có thể tùy chỉnh cao | Tạo ra các gia đình sản phẩm liên quan đến nhau |
+| Cho phép chạy các bước xây dựng bổ sung trước khi lấy sản phẩm ra | Trả về sản phẩm ngay khi khởi tạo, không cần bước xây dựng bổ sung |
+| Thiết kế để giúp bạn xây dựng đối tượng có tính tùy biến cao hơn | Dùng để ẩn danh sách các đối tượng khỏi mã khách |
+| Các đối tượng khó chuyển đổi hơn so với Abstract Factory | Có thể phục vụ như một lớp bao cho Facade khi bạn muốn che giấu cách tạo đối tượng |
+| | Có thể được biến đổi thành Factory Method hoặc Prototype để tùy chỉnh hơn |
 
 
 
