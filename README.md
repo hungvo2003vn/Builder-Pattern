@@ -18,6 +18,7 @@
 
 ##
 <h3 id="Muc-1">1. Cấu trúc</h3>
+
 - Giới thiệu:
   - Builder là một design pattern thuộc nhóm khởi tạo (Creational Pattern). Được xây dựng nhằm khắc phục một số nhược điểm tồn đọng của Factory Method và Abstract Method khi gặp những đối tượng phức tạp.
   - Builder Pattern cho phép chúng ta chia nhỏ Constructor của chúng ta ra thành nhiều phần và từ đó nó cho phép chúng ta khởi tạo đối tượng phức tạp từ các đối tượng đơn giản, một cách linh hoạt theo nhiều hướng khác nhau.
@@ -49,6 +50,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
   </p>
 ##  
 <h3 id="Muc-2">2. Ưu điểm và Nhược điểm</h3>
+
 - Ưu điểm:
   - Tránh việc phải viết nhiều hàm khởi tạo cho class.
   - Không cần phải truyền giá trị null cho các tham số mà đối tượng không cần sử dụng tới.
@@ -59,6 +61,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
   - Code có thể trở nên nhiều hơn và phức tạp hơn do đòi hỏi phải sử dụng nhiều class mới có thể cài đặt được pattern này.
 ##
 <h3 id="Muc-3">3. Hiện thực bằng code Java</h3>
+
 - __Product__:
 ``` java
 public class BankAccount{ // product
@@ -290,6 +293,7 @@ Account Information
 ```
 ##
 <h3 id="Muc-4">4. Liên hệ Design Pattern khác</h3>
+
  - Với Design Pattern, không có một giải pháp nào là ưu việt, tối ưu cho mọi trường hợp. nó sẽ phụ thuộc vào việc bạn cần hiện thực cái gì.
  - Giống nhau giữa Builder, Abstract Factory, Prototype là cả 3 đều có thể hiện thực dưới dạng Singletons.
  - So sánh giữa Builder Pattern và Abstract Factory Pattern:
@@ -302,7 +306,8 @@ Account Information
 | Thiết kế để giúp bạn xây dựng đối tượng có tính tùy biến cao hơn | Dùng để ẩn danh sách các đối tượng khỏi mã khách |
 | Các đối tượng khó chuyển đổi hơn so với Abstract Factory | Có thể phục vụ như một lớp bao cho Facade khi bạn muốn che giấu cách tạo đối tượng |
 | | Có thể được biến đổi thành Factory Method hoặc Prototype để tùy chỉnh hơn |
-
+##
+<h3 id="Muc-5">5. Video demo web</h3>
 
 
 
