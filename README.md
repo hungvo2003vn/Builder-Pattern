@@ -10,14 +10,14 @@
 | Nguyễn Phạm Thiên Phúc | 2114445 | Làm Web ứng dụng ví dụ, trình bày sản phẩm |
 
 ## Nội dung
-1. Cấu trúc
-2. Ưu điểm và nhược điểm
-3. Hiện thực bằng code Java
-4. Liên hệ Design Pattern khác
-5. Video demo web
+[1. Cấu trúc](#Muc-1)\
+[2. Ưu điểm và nhược điểm](#Muc-2)\
+[3. Hiện thực bằng code Java](#Muc-3)\
+[4. Liên hệ Design Pattern khác](#Muc-4)\
+[5. Video demo web](#Muc-5)
 
 ##
-### 1. Cấu trúc
+<h3 id="Muc-1">1. Cấu trúc</h3>
 - Giới thiệu:
   - Builder là một design pattern thuộc nhóm khởi tạo (Creational Pattern). Được xây dựng nhằm khắc phục một số nhược điểm tồn đọng của Factory Method và Abstract Method khi gặp những đối tượng phức tạp.
   - Builder Pattern cho phép chúng ta chia nhỏ Constructor của chúng ta ra thành nhiều phần và từ đó nó cho phép chúng ta khởi tạo đối tượng phức tạp từ các đối tượng đơn giản, một cách linh hoạt theo nhiều hướng khác nhau.
@@ -48,7 +48,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
       <img src="https://user-images.githubusercontent.com/108314498/234661349-5eb87019-fe59-47df-b168-4b0527a5d921.png">
   </p>
 ##  
-### 2. Ưu điểm và Nhược điểm
+<h3 id="Muc-2">2. Ưu điểm và Nhược điểm</h3>
 - Ưu điểm:
   - Tránh việc phải viết nhiều hàm khởi tạo cho class.
   - Không cần phải truyền giá trị null cho các tham số mà đối tượng không cần sử dụng tới.
@@ -58,7 +58,7 @@ Mỗi Product sẽ có ConcreteBuilder tương ứng.
 - Nhược điểm:
   - Code có thể trở nên nhiều hơn và phức tạp hơn do đòi hỏi phải sử dụng nhiều class mới có thể cài đặt được pattern này.
 ##
-### 3. Hiện thực bằng code Java
+<h3 id="Muc-3">3. Hiện thực bằng code Java</h3>
 - __Product__:
 ``` java
 public class BankAccount{ // product
@@ -289,7 +289,7 @@ Account Information
 * InterestRate: 1
 ```
 ##
-### 4. Liên hệ Design Pattern khác
+<h3 id="Muc-4">4. Liên hệ Design Pattern khác</h3>
  - Với Design Pattern, không có một giải pháp nào là ưu việt, tối ưu cho mọi trường hợp. nó sẽ phụ thuộc vào việc bạn cần hiện thực cái gì.
  - Giống nhau giữa Builder, Abstract Factory, Prototype là cả 3 đều có thể hiện thực dưới dạng Singletons.
  - So sánh giữa Builder Pattern và Abstract Factory Pattern:
