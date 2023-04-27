@@ -313,27 +313,9 @@ Account Information
 ##
 <h3 id="Muc-5">5. Video demo web</h3>
 
+https://user-images.githubusercontent.com/108314498/234790675-909f68cf-73d3-4a49-93e4-1448c8675205.mp4
 
 
-
-
-
-
-
-  
-
-
-
-
-  
-
-
-
-
-
-
-
-  
 
 
 
